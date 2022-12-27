@@ -3,11 +3,15 @@ let URL = "https://jsonplaceholder.typicode.com/posts";
 let User = await API(URL);
 let paginationContainer = document.querySelector(".paginationContainer");
 let countPerPage = document.getElementById("countPerPage");
+
+//model
 let state = {
   page: 1,
   DATA: User,
 };
+
 displayCount();
+
 if (
   document.readyState === "loading" ||
   document.readyState === "complete" ||
@@ -18,6 +22,7 @@ if (
   document.addEventListener("DOMContentLoaded", UserList);
 }
 
+//controllers
 function UserList() {
   paginationContainer.innerHTML = "";
   state.DATA.slice(state.page * 10 - 10, state.page * 10).forEach((el) => {
@@ -25,6 +30,7 @@ function UserList() {
   });
 }
 
+// view
 function displayPage(el) {
   let fragement = document.createDocumentFragment();
   let ul = document.createElement("ul");
@@ -36,6 +42,7 @@ function displayPage(el) {
   paginationContainer.appendChild(fragement);
 }
 
+// controllers
 function displayCount() {
   [...Array(state.DATA.length / 10)].map((_, index) => {
     let button = document.createElement("button");
@@ -48,7 +55,7 @@ function displayCount() {
   });
 }
 
-// previous state
+// previous state controllers
 let prev = document.getElementById("prev");
 prev.addEventListener("click", () => {
   if (state.page > 1) {
@@ -59,7 +66,7 @@ prev.addEventListener("click", () => {
   }
 });
 
-// Next state
+// Next state controllers
 let next = document.getElementById("next");
 next.addEventListener("click", () => {
   if (state.page < state.DATA.length / 10) {
