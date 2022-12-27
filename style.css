@@ -1,0 +1,70 @@
+* {
+  box-sizing: border-box;
+}
+
+.container {
+  padding: 5px;
+  border: 1px solid black;
+  max-width: 500px;
+  height: 350px;
+  margin: auto;
+  position: relative;
+}
+
+.image-carousel {
+  display: none;
+}
+img {
+  max-width: 500px;
+  height: 330px;
+}
+
+.prev-arrow,
+.next-arrow {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  padding: 15px;
+  margin-top: -20px;
+  z-index: 2;
+  color: aliceblue;
+}
+
+.prev-arrow {
+  left: 0;
+}
+.next-arrow {
+  right: 0;
+}
+
+.carousel-dots {
+  z-index: 1;
+  position: absolute;
+  margin-top: -30px;
+  width: 100%;
+}
+
+.dot {
+  height: 20px;
+  background-color: transparent;
+  width: 20px;
+  border-radius: 50px;
+  margin: 0 5px;
+  display: inline-block;
+  border: 1px solid white;
+}
+
+.prev-arrow.disable,
+.next-arrow.disable {
+  color: grey;
+  cursor: not-allowed;
+}
+.active,
+.dot:hover {
+  background-color: white;
+}
+
+.active {
+  background-color: blue;
+  color: aliceblue;
+}
