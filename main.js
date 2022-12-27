@@ -40,7 +40,9 @@ function displayCount() {
   [...Array(state.DATA.length / 10)].map((_, index) => {
     let button = document.createElement("button");
     button.innerHTML = index + 1;
+    button.id = "c";
     button.setAttribute("data-id", index + 1);
+    state.page === index + 1 ? button.classList.add("active") : "";
     countPerPage.appendChild(button);
     button.onclick = () => getCount(index + 1);
   });
@@ -50,8 +52,10 @@ function displayCount() {
 let prev = document.getElementById("prev");
 prev.addEventListener("click", () => {
   if (state.page > 1) {
+    countPerPage.innerHTML = "";
     state.page -= 1;
     UserList();
+    displayCount();
   }
 });
 
@@ -59,11 +63,15 @@ prev.addEventListener("click", () => {
 let next = document.getElementById("next");
 next.addEventListener("click", () => {
   if (state.page < state.DATA.length / 10) {
+    countPerPage.innerHTML = "";
     state.page += 1;
     UserList();
+    displayCount();
   }
 });
 function getCount(idx) {
+  countPerPage.innerHTML = "";
   state.page = idx;
   UserList();
+  displayCount();
 }
